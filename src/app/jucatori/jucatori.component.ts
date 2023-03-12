@@ -2,27 +2,25 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { EchipeDataSource, EchipeItem } from './echipe-datasource';
+import { JucatoriDataSource, JucatoriItem } from './jucatori-datasource';
 
 @Component({
-  selector: 'app-echipe',
-  templateUrl: './echipe.component.html',
-  styleUrls: ['./echipe.component.css']
+  selector: 'app-jucatori',
+  templateUrl: './jucatori.component.html',
+  styleUrls: ['./jucatori.component.css']
 })
-export class EchipeComponent implements AfterViewInit {
+export class JucatoriComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<EchipeItem>;
-  dataSource: EchipeDataSource;
+  @ViewChild(MatTable) table!: MatTable<JucatoriItem>;
+  dataSource: JucatoriDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'amount'];
+  displayedColumns = ['id', 'name'];
 
   constructor() {
-    this.dataSource = new EchipeDataSource();
+    this.dataSource = new JucatoriDataSource();
   }
-
-  
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;

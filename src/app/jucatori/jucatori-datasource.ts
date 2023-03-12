@@ -5,43 +5,42 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
-export interface EchipeItem {
+export interface JucatoriItem {
   name: string;
   id: number;
-  amount: number;
 }
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: EchipeItem[] = [
-  {id: 1, name: 'Hydrogen', amount: 5},
-  {id: 2, name: 'Helium', amount: 5},
-  {id: 3, name: 'Lithium', amount: 10},
-  {id: 4, name: 'Beryllium', amount: 15},
-  {id: 5, name: 'Boron', amount: 5},
-  {id: 6, name: 'Carbon', amount: 5},
-  {id: 7, name: 'Nitrogen', amount: 10},
-  {id: 8, name: 'Oxygen', amount: 5},
-  {id: 9, name: 'Fluorine', amount: 15},
-  {id: 10, name: 'Neon', amount: 15},
-  {id: 11, name: 'Sodium', amount: 10},
-  {id: 12, name: 'Magnesium', amount: 5},
-  {id: 13, name: 'Aluminum', amount: 15},
-  {id: 14, name: 'Silicon', amount: 15},
-  {id: 15, name: 'Phosphorus', amount: 10},
-  {id: 16, name: 'Sulfur', amount: 10},
-  {id: 17, name: 'Chlorine', amount: 5},
-  {id: 18, name: 'Argon', amount: 10},
-  {id: 19, name: 'Potassium', amount: 5},
-  {id: 20, name: 'Calcium', amount: 15},
+const EXAMPLE_DATA: JucatoriItem[] = [
+  {id: 1, name: 'Hydrogen'},
+  {id: 2, name: 'Helium'},
+  {id: 3, name: 'Lithium'},
+  {id: 4, name: 'Beryllium'},
+  {id: 5, name: 'Boron'},
+  {id: 6, name: 'Carbon'},
+  {id: 7, name: 'Nitrogen'},
+  {id: 8, name: 'Oxygen'},
+  {id: 9, name: 'Fluorine'},
+  {id: 10, name: 'Neon'},
+  {id: 11, name: 'Sodium'},
+  {id: 12, name: 'Magnesium'},
+  {id: 13, name: 'Aluminum'},
+  {id: 14, name: 'Silicon'},
+  {id: 15, name: 'Phosphorus'},
+  {id: 16, name: 'Sulfur'},
+  {id: 17, name: 'Chlorine'},
+  {id: 18, name: 'Argon'},
+  {id: 19, name: 'Potassium'},
+  {id: 20, name: 'Calcium'},
 ];
 
 /**
- * Data source for the Echipe view. This class should
+ * Data source for the Jucatori view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class EchipeDataSource extends DataSource<EchipeItem> {
-  data: EchipeItem[] = EXAMPLE_DATA;
+export class JucatoriDataSource extends DataSource<JucatoriItem> {
+  data: JucatoriItem[] = EXAMPLE_DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -54,7 +53,7 @@ export class EchipeDataSource extends DataSource<EchipeItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<EchipeItem[]> {
+  connect(): Observable<JucatoriItem[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -77,7 +76,7 @@ export class EchipeDataSource extends DataSource<EchipeItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: EchipeItem[]): EchipeItem[] {
+  private getPagedData(data: JucatoriItem[]): JucatoriItem[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -90,7 +89,7 @@ export class EchipeDataSource extends DataSource<EchipeItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: EchipeItem[]): EchipeItem[] {
+  private getSortedData(data: JucatoriItem[]): JucatoriItem[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -99,7 +98,6 @@ export class EchipeDataSource extends DataSource<EchipeItem> {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
         case 'name': return compare(a.name, b.name, isAsc);
-        case 'amount': return compare(+a.amount, +b.amount, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }

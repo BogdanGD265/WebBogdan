@@ -1,0 +1,39 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "sport": [
+    {
+      "ID_ECHIPA": 22,
+      "DENUMIRE_ECHIPA": "ec",
+      "NUME_JUCATOR": "nu",
+      "PRENUME_JUCATOR": "pre",
+      "DATA_NASTERE": "1994-02-22",
+      "ID_JUCATOR": 4,
+      "id": 1
+    },
+    {
+      "ID_ECHIPA": "",
+      "DENUMIRE_ECHIPA": "",
+      "NUME_JUCATOR": "",
+      "PRENUME_JUCATOR": "",
+      "DATA_NASTERE": "",
+      "ID_JUCATOR": "",
+      "id": 2
+    }
+  ]
+}
